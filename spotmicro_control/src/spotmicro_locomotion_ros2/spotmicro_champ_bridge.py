@@ -52,9 +52,9 @@ DEFAULT_STAND_JOINT_POSITIONS = [
 ]
 
 
-DEFAULT_KP = [4.0, 8.0, 7.0] * 4
-DEFAULT_KD = [0.12, 0.18, 0.16] * 4
-DEFAULT_MAX_FORCE = [2.2, 4.0, 4.0] * 4
+DEFAULT_KP = [4.0, 8.0, 7.0, 4.0, 8.0, 7.0, 4.5, 9.0, 8.0, 4.5, 9.0, 8.0]
+DEFAULT_KD = [0.12, 0.18, 0.16, 0.12, 0.18, 0.16, 0.14, 0.22, 0.20, 0.14, 0.22, 0.20]
+DEFAULT_MAX_FORCE = [2.2, 4.0, 4.0, 2.2, 4.0, 4.0, 2.5, 4.8, 4.8, 2.5, 4.8, 4.8]
 
 
 def clamp_value(value: float, minimum: float, maximum: float) -> float:

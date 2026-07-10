@@ -67,11 +67,13 @@ The first tuning point is the bridge gains in the launch file:
 ```yaml
 initial_joint_positions: [0.0, 0.75, -1.45] * 4
 startup_stand_duration: 2.0
-kp: [4.0, 8.0, 7.0] * 4
-kd: [0.12, 0.18, 0.16] * 4
-max_force: [2.2, 4.0, 4.0] * 4
+kp: [4.0, 8.0, 7.0, 4.0, 8.0, 7.0, 4.5, 9.0, 8.0, 4.5, 9.0, 8.0]
+kd: [0.12, 0.18, 0.16, 0.12, 0.18, 0.16, 0.14, 0.22, 0.20, 0.14, 0.22, 0.20]
+max_force: [2.2, 4.0, 4.0, 2.2, 4.0, 4.0, 2.5, 4.8, 4.8, 2.5, 4.8, 4.8]
 ```
 
 The bridge holds `initial_joint_positions` briefly before accepting CHAMP trajectories, which gives the simulated robot a standard standing pose instead of immediately chasing walking targets. Each gain or effort value can be a single scalar applied to all 12 joints or a 12-value list in the same order as `spotmicro_control/config/joints/joints.yaml`. Start with small velocities on `/cmd_vel` and increase `kp` or `max_force` gradually only after the simulated joints track smoothly.
+
+For the first walking tune, `spotmicro_control/config/gait/gait.yaml` uses a small negative `com_x_translation`, slower velocities, a longer stance duration, and a taller swing. This shifts some load away from the rear pair and gives the rear legs more time and clearance to enter swing.
 
 If a joint moves in the opposite direction from CHAMP's target, set the corresponding value in the bridge `joint_signs` parameter to `-1.0`.
